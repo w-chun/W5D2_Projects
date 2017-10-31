@@ -1,0 +1,17 @@
+<h2>Add Post</h2>
+
+<form class="" action="<%= sub_posts_url(@sub) %>" method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+
+  <label for="">Title
+    <input type="text" name="post[title]" value="">
+  </label>
+  <label for="">URL
+    <input type="text" name="post[url]" value="">
+  </label>
+  <label for="">Content
+    <input type="text" name="post[content]" value="">
+  </label>
+  <input type="submit" name="" value="Add Post">
+
+</form>

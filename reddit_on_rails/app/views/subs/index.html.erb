@@ -1,0 +1,10 @@
+<h1>All Subs</h1>
+
+<ul>
+  <% @subs.each do |subpost| %>
+    <li><%= link_to subpost.title, sub_url(subpost) %>
+    <%= button_to 'Delete Sub', sub_url(subpost), method: :delete %></li>
+    <% end %>
+</ul>
+
+<%= button_to 'New Sub', new_sub_url, method: :get %>
