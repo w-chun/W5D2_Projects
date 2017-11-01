@@ -17,7 +17,7 @@ class PostsController < ApplicationController
   def update
     @post = Post.find{params[:id]}
     if @post.update_attributes(post_params)
-      redirect_to sub_url(@post.subpost)
+      redirect_to sub_url(@post.subs)
     else
       flash.now[:errors] = @post.errors.full_messages
       render :edit
@@ -27,17 +27,16 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.user_id = current_user.id
-    @post.sub_id = params[:sub_id]
     if @post.save
-      redirect_to sub_url(@post.subpost)
+      redirect_to post_url(@post)
     else
-      redirect_to sub_url(@post.subpost)
+      redirect_to post_url(@post)
       flash[:errors] = @post.errors.full_messages
     end
   end
 
   private
   def post_params
-    params.require(:post).permit(:title, :url, :content)
+    params.require(:post).permit(:title, :url, :content, sub_ids: [])
   end
 end
